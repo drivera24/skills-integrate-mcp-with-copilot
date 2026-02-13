@@ -145,7 +145,7 @@ def require_authorizations(authorizations: List[Authorization], require_all: boo
             for auth in authorizations:
                 context.add_authorization(auth)
 
-            is_authorized = context.check_all(user, **kwargs) if require_all else context.check_any(user, **kwargs)
+            is_authorized = context.check(user, **kwargs) if require_all else context.check_any(user, **kwargs)
 
             if not is_authorized:
                 raise HTTPException(
@@ -162,7 +162,7 @@ def require_authorizations(authorizations: List[Authorization], require_all: boo
             for auth in authorizations:
                 context.add_authorization(auth)
 
-            is_authorized = context.check_all(user, **kwargs) if require_all else context.check_any(user, **kwargs)
+            is_authorized = context.check(user, **kwargs) if require_all else context.check_any(user, **kwargs)
 
             if not is_authorized:
                 raise HTTPException(
